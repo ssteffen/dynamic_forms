@@ -1,0 +1,29 @@
+<div class="buttons">
+<%= link_to(image_tag('/image/icons/tick.png', :alt => '') + "Add New Field", :controller => 'admin/new_forms', :action => 'add_field') %>
+</button>
+<div class="buttons">
+<%= link_to(image_tag('/image/icons/tick.png', :alt => '') + "Delete all fields", :controller => 'admin/new_forms', :action => 'delete_all_fields') %>
+</button>
+<div class="buttons">
+<%= link_to(image_tag('/image/icons/tick.png', :alt => '') + "Done", :controller => 'admin/new_forms', :action => 'list') %>
+</button>
+<div id = "list">
+	<h3>List of Current Fields</h3>
+	<p>you may re-edit and delete elements in the list</p> 
+	<% if @message %>
+	<%= @message %>
+	<% end %>
+	<% if @fields != "To be Filled" %>
+	<table class = "list_form">
+		<tr>
+			<th>Name</th><th>Type</th><th></th><th></th>
+		<% for field in @fields do %>
+		<tr>
+			<td><%= field[:fields_name]%></td><td><%= field[:fields_type]%></td>
+			<td style = "width: 15px;"><%= link_to("Edit", :controller => 'admin/new_forms', :action => 'edit_field', :id => CGI.escape(field[:fields_name])) %></td>
+			<td style = "width: 15px;"><%= link_to("Delete", :controller => 'admin/new_forms', :action => 'delete_field', :id => CGI.escape(field[:fields_name])) %></td>
+		</tr>
+		<% end %>
+	<% end %>
+	</table>
+</div>

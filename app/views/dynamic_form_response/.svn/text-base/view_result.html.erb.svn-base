@@ -1,0 +1,35 @@
+<%= render :partial => '/shared/flash_notice' %>
+<div class = "container_12"> 
+	<div class = "grid_3">       
+		<h2><%= @form.title %> Submission for <%= @name %></h2>
+	</div>
+	<div class = "clear">&nbsp;</div>
+	<br />
+	<div class = "grid_6">
+		<ul>
+			<% check = Hash.new %>
+			<% for result in @results %>
+				<% if result[1] == "Check Box" %>
+					<% unless check[result[0].to_sym] == true %>
+					<li>
+						<strong><%= result[0] %></strong>
+						<ul>
+							<% for option in @checkbox_hash[result[0].to_sym] %>
+								<li><%= option %></li>
+							<% end %>
+							<% check[result[0].to_sym] = true %>
+						</ul>
+					</li>
+					<% end %>
+				<% else %>
+					<li>
+						<strong><%= result[0].capitalize.gsub('_', ' ') %>:</strong> <%= result[1] %>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+	</div>
+</div>
+<% for result in @results %>
+	<% check[result[0].to_sym] = nil %>
+<% end%>

@@ -1,0 +1,41 @@
+
+<% form_tag({:action => 'add_field'}, {:class => 'hsgform'}) do %>
+<% field_set_tag 'Add Field' do %>
+<table>
+	<tr>
+		<td>Name</td><td>Type</td>
+	</tr>
+	<tr>
+		<% if @field_hash.nil? %>
+		<td><%= text_field_tag 'info[fields_name]', nil %></td>
+		<td><%= select_tag 'info[fields_type]', options_for_select([['Select One', ''], 'Text Field', 'Text Area', 'Check Box', 'Radio Button', 'Select Box', 'Numbered Select Box',
+							'Date Select', 'Time Select', 'DateTime Select', 'State Select', 'Country Select', 'Paragraph', 'Accept_Terms'], @field_hash[:fields_type]), 
+							:onchange => remote_function(:url => {:action => 'change_type'}, :with => "'type=' + value" ) %>
+		</td>
+		<td>
+			<ul><li>
+			<div id = "field_settings">
+				
+			</div>
+			</li></ul>
+		</td>
+		<% else %>
+		<td><%= text_field_tag 'info[fields_name]', @field_hash[:fields_name] %></td>
+		<td><%= select_tag 'info[fields_type]', options_for_select([['Select One', ''], 'Text Field', 'Text Area', 'Check Box', 'Radio Button', 'Select Box', 'Numbered Select Box', 
+							'Date Select', 'Time Select', 'DateTime Select', 'State Select', 'Country Select', 'Paragraph', 'Accept Terms'], @field_hash[:fields_type]), 
+							:onchange => remote_function(:url => {:action => 'change_type'}, :with => "'type=' + value" ) %>
+		</td>
+		<td>
+			<ul><li>
+			<div id = "field_settings">
+
+			</div>
+			</li></ul>
+		</td>
+		<% end %>
+	</tr>
+</table>
+<% end %>
+<%= submit_tag 'Add Field' %> 
+<% end %>
+<%= link_to "Back", :action => 'add_fields'%>

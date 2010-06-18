@@ -1,0 +1,7 @@
+<% unless flash[:notice].blank? -%>
+<p class="notice"><%= image_tag "/images/icons/error.png", :alt => "NOTICE:" %>&nbsp;<%= flash[:notice] %></p>
+<% end -%>
+<% unless flash[:error].blank? -%>
+<p class="error"><%= image_tag "/images/icons/exclamation.png", :alt => "ERROR:" %>&nbsp;<%= flash[:error] %></p>
+<% end -%>
+

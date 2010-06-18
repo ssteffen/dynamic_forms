@@ -1,0 +1,43 @@
+<%= render :partial => '/shared/flash_notice' %>
+<div class = "container_12"> 
+	<div class = "grid_3">       
+		<h2>View Submitted Forms: Select Form</h2>
+	</div>
+	<div class = "clear">&nbsp;</div>
+	<br />
+	<div class = "grid_6">
+		<table class="list_form">
+			<thead>
+				<tr>
+					<th>Form Name</th>	
+					<th>Enabled?</th>
+					<th>Last Updated</th>
+					<th>Select</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% for form in @forms %>
+				<tr class="<%= cycle('odd','even', :name => "forms") %>">
+					<td><%= form.title %></td>
+					<td><%= form.enabled %></td>
+					<td><%= form.updated_at%></td>
+					<td class="action">
+						<%= link_to image_tag('/images/icons/page_white_magnify.png', :alt => "View Submissions"), 
+						:controller => 'admin/form_results', :action => 'view_submissions', :id => form.id %>
+					</td>
+				</tr>
+				<% end -%>
+				<% for form in @alt_forms %>
+				<tr class="<%= cycle('odd','even', :name => "forms") %>">
+					<td colspan = "2"><%= form.title %></td>
+					<td><%= form.updated_at%></td>
+					<td class="action">
+						<%= link_to image_tag('/images/icons/page_white_magnify.png', :alt => "View Submissions"), 
+						:controller => 'admin/form_results', :action => 'view_alt_submissions', :id => form.id %>
+					</td>
+				</tr>
+				<% end -%>
+			</tbody>
+		</table>
+	</div>
+</div>

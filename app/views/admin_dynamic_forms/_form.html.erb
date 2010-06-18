@@ -1,0 +1,30 @@
+<%= f.error_messages %>
+<% field_set_tag "Form Information" do %>
+	<ul>
+		<li><%= f.label :title %>
+			<%= f.text_field :title, :size => 30, :maxlength => 255, :class=> "defaultText", :title => "Form Title" %></li>
+		<li><%= f.label :stub %>
+			<%= f.text_field :stub, :size => 50, :maxlength => 255, :class=> "defaultText", :title => "Form Stub" %></li>
+		<li><%= f.label :prepend_content %>
+			<%= f.text_area :prepend_content, :size => '30x15' %></li>
+		<li><%= f.label :append_content %>
+			<%= f.text_area :append_content, :size => "30x15" %></li>
+		<li><%= f.label :success_message %>
+			<%= f.text_area :success_message, :size => "30x15", :class => 'defaultText', :title => 'Message on successful completion of the form.'%></li>
+		<li><%= f.label :failure_message %>
+			<%= f.text_area :failure_message, :size => '30x15', :class => 'defaultText', :title => 'Message on failure to complete the form.'%></li>
+		<li><%= f.label :enabled, "Enabled?"%> <%= f.check_box :enabled %></li>	
+		<li><%= f.label :available_at%> <%= f.datetime_select :available_at %></li>
+		<li><%= f.label :unavailable_at %> <%= f.datetime_select :unavailable_at %></li>
+		<li><%= f.label :unavailable_message %>
+			<%= f.text_area :unavailable_message, :size => '30x15', :class => 'defaultText', 
+			:title => 'Message to display when the form is unavailable.'%></li>
+		<li><%= f.label :updated_at %> <%= f.datetime_select :updated_at %></li>
+		<li><%= f.label :email_notification_address, "Send Email Notification To" %> 
+		<%= f.text_field :email_notification_address, :size => 30, :maxlength => 255, :class => 'defaultText' %></li>
+		<li><%= f.label :email_notification_content %>
+			<%= f.text_area :email_notification_content, :size => '30x15', :class => 'defaultText', 
+			:title => 'Email Contents to be sent when a form has been submitted.'%></li>
+	</ul>
+<% end %>
+	

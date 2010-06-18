@@ -1,0 +1,21 @@
+<% content_for :jquery do -%>
+	$('.defaultText').example(function() {
+	 return $(this).attr('title'); 
+	}, {className: 'defaultTextActive'});
+<% end -%>
+
+<%= render :partial => '/shared/flash_notice' %>
+        
+	<div id="editor">
+		<% form_for @form, :html => { :class => "hsgform" }, :url => {:action => 'add_fields', :id => @form.id} do |f| %>
+			<%= render :partial => 'form', :locals => { :f => f } %>		
+			<div class="buttons">
+	  		<button type="submit" class="positive">
+	      	<img src="/images/icons/tick.png" alt=""/> 
+	      	Continue
+	  		</button>
+	  		<%= link_to image_tag('/images/icons/cross.png', :alt => '') + "Cancel", :controller => 'new_forms', :action => 'list' %>
+			<hr />
+			</div>
+		<% end %>
+	</div>

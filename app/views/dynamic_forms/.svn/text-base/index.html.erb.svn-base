@@ -1,0 +1,9 @@
+<h2 class = "johndoe">Online Forms</h2>
+<ul class = "entryText" style = "list-style-type: none;">
+	<% for f in @form_list do %>
+		<li><%= link_to(f.title, :action => "display_form", :id => CGI.escape(f.title))%></li>
+	<% end %>
+	<% for f in @alt_forms do %>
+		<li><%= link_to(f.title, :action => f.title.downcase.gsub(' ', '_'))%></li>
+	<% end %>
+</ul>
