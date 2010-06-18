@@ -4,9 +4,15 @@ DynamicForms
 DynamicForms is a fully implemented system to allow you to create dynamic forms 
 without the need for a pre-existing model for each form. 
 
+This plugin functions as a self-contained mini-application. That is very easy to work with.
 
 Installation
 ============
+
+BEFORE YOU BEGIN:
+dynamic_forms relies on a few plugins dependencies. 
+First, make sure you have the validates_as_email plugin installed. This can be downloaded at http://github.com/gbdev/validates_as_email.
+Next, make sure you have the state_select plugin. http://github.com/bansalakhil/state_select.
 
 To install the plugin, download the source to the plugins directory of your rails app. 
 Then from your application root directory run the install file with:
@@ -16,6 +22,23 @@ ruby vendor/plugins/dynamic_forms/install.rb
 The install program will ask you to input the names of the layouts to interface dynamic_forms with.
 It will first ask for an administrative layout to use when creating the forms and viewing submissions.
 Then it will ask for a primary front-end layout for the user to view and submit the form from. 
+NOTE: Make sure both layouts entered include the javascript defaults.
+
+Below is a transcript of a successful install.
+t
+Please Enter an Administrator Layout name: 
+admin
+Please Enter a Front-End Layout name: 
+primary
+Installing layout files into the controllers...
+        layout 'secondary'
+Done
+Installing layout files into the controllers...
+        layout 'secondary'
+Done
+Installing layout files into the controllers...
+        layout 'primary'
+Done
 
 This is purely so that you can customize the plugin to fit into your application better. 
 
@@ -23,10 +46,19 @@ One more step, Just run rake db:migrate:dynamic_forms.
 
 This will setup the two database tables that dynamic_forms needs to function. Once this is done, you should be ready to go.
 
-Example
-=======
+Usage
+=====
 
+The plugin automatically creates a series of webpages to create and use the forms. 
+There are three controllers for three different uses.
+1. Administrator creation and editing of forms. "admin_dynamic_forms_controller.rb"
+2. Front-End Form display and submission. "dynamic_forms_controller.rb"
+3. Administrator managing of Form Submissions. "dynamic_form_response_controller.rb"
 
-
+Just navigate to http://[your_app]/admin_dynamic_forms to get started. Here you will create the form and fields to be used.
+Then navigate to http://[your_app]/dynamic_forms to view the forms. Select one and the user can fill out a form and submit it.
+When a form is submitted, an email is sent as defined in the form creation as a notification.
+Navigate to http://[your_app]/dynamic_form_response to view all of the submissions.
+ 
 
 Copyright (c) 2010 Steven Steffen, released under the MIT license
