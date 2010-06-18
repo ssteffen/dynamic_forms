@@ -25,7 +25,6 @@ Then it will ask for a primary front-end layout for the user to view and submit 
 NOTE: Make sure both layouts entered include the javascript defaults.
 
 Below is a transcript of a successful install.
-t
 Please Enter an Administrator Layout name: 
 admin
 Please Enter a Front-End Layout name: 
