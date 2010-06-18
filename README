@@ -1,0 +1,32 @@
+DynamicForms
+============
+
+DynamicForms is a fully implemented system to allow you to create dynamic forms 
+without the need for a pre-existing model for each form. 
+
+
+Installation
+============
+
+To install the plugin, download the source to the plugins directory of your rails app. 
+Then from your application root directory run the install file with:
+
+ruby vendor/plugins/dynamic_forms/install.rb
+
+The install program will ask you to input the names of the layouts to interface dynamic_forms with.
+It will first ask for an administrative layout to use when creating the forms and viewing submissions.
+Then it will ask for a primary front-end layout for the user to view and submit the form from. 
+
+This is purely so that you can customize the plugin to fit into your application better. 
+
+One more step, Just run rake db:migrate:dynamic_forms.
+
+This will setup the two database tables that dynamic_forms needs to function. Once this is done, you should be ready to go.
+
+Example
+=======
+
+
+
+
+Copyright (c) 2010 Steven Steffen, released under the MIT license
